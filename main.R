@@ -100,6 +100,7 @@ server <- function(input, output) {
     y <- extract(input$y)
     x <- extract(input$x)
     fit <- lm(y ~ x)
+    # fit <- glm(y ~ x,family = 'binomial')
     withMathJax(
       paste0("\\(\\hat{\\beta}_1 = \\dfrac{\\big(\\sum^n_{i = 1} x_i y_i \\big) - n \\bar{x} \\bar{y}}{\\sum^n_{i = 1} (x_i - \\bar{x})^2} = \\) ", round(fit$coef[[2]], 3)),
       br(),
@@ -114,6 +115,7 @@ server <- function(input, output) {
     y <- extract(input$y)
     x <- extract(input$x)
     fit <- lm(y ~ x)
+    # fit <- glm(y ~ x,family = 'binomial')
     summary(fit)
   })
 
@@ -135,6 +137,7 @@ server <- function(input, output) {
     y <- extract(input$y)
     x <- extract(input$x)
     fit <- lm(y ~ x)
+    # fit <- glm(y ~ x,family = 'binomial')
     if (summary(fit)$coefficients[1, 4] < 0.05 & summary(fit)$coefficients[2, 4] < 0.05) {
       withMathJax(
         paste0("(Make sure the assumptions for linear regression (independance, linearity, normality and homoscedasticity) are met before interpreting the coefficients.)"),
