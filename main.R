@@ -123,6 +123,7 @@ server <- function(input, output) {
     y <- extract(input$y)
     x <- extract(input$x)
     fit <- lm(y ~ x)
+     # fit <- glm(y ~ x,family = 'binomial')
     withMathJax(
       paste0(
         "Adj. \\( R^2 = \\) ", round(summary(fit)$adj.r.squared, 3),
@@ -175,6 +176,7 @@ server <- function(input, output) {
     y <- extract(input$y)
     x <- extract(input$x)
     fit <- lm(y ~ x)
+     # fit <- glm(y ~ x,family = 'binomial')
     dat <- data.frame(x, y)
     p <- ggplot(dat, aes(x = x, y = y)) +
       geom_point() +
